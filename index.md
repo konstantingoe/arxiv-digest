@@ -8,211 +8,230 @@ Weekly curated digest of arXiv papers on causal inference, causal discovery, gra
 
 ---
 
-# arXiv Digest 2026-W35
+# arXiv Digest 2026-W37
 
-**Week of August 17 -- 24, 2026**
-
-Categories scanned: `stat.ME`, `math.ST`, `stat.ML`, `cs.LG`
-Papers scanned: 720 | Papers selected: 18
+**Covered period:** 2026-08-31 to 2026-09-07 UTC  
+**Total scanned:** 656 | **Kept:** 20
 
 ---
 
 ## Causal Discovery & Structure Learning
 
-### Causal Discovery in Equal Variance Linear Gaussian DAGs via SURE-Tuned Ridge Regression
-**Sambit Mishra, Urbashi Mitra**
-[arXiv:2608.17132](https://arxiv.org/abs/2608.17132v1) | `cs.LG`, `stat.ML`
+### Beyond Stationarity in Time Series: Discovering Causal Structures and Latent Regimes via Markov Blankets
+**Lei Zan, Charles K. Assaad, Emilie Devijver, Eric Gaussier**  
+[arXiv:2609.05150](https://arxiv.org/abs/2609.05150) | `cs.LG`, `cs.AI`
 
-Proposes a closed-form DAG recovery method for equal-variance linear Gaussian SEMs using SURE-tuned ridge regression, bypassing the per-problem hyperparameter tuning and iterative optimization of continuous methods such as NOTEARS and DAGMA. The approach is particularly effective in sample-limited and high-dimensional regimes where gradient-based optimizers are poorly conditioned.
+Introduces RCBNB-MB, a constraint-and-noise-based causal discovery algorithm for time series that simultaneously identifies latent *regimes* (contiguous intervals with a stable causal structure) and the within-regime causal graphs, using Markov blanket selection to keep the search tractable.
 
-*Why relevant: Direct contribution to DAG structure learning; compares against NOTEARS/DAGMA and targets the sample-limited high-dimensional setting central to the research.*
-
----
-
-### Multi-Method Causal Evidence Synthesis: Ranking Candidate Drivers by Convergent Cross-Method Evidence from Observational Data
-**Manish Gupta, Dipanjan De**
-[arXiv:2608.20187](https://arxiv.org/abs/2608.20187v1) | `stat.ME`, `cs.AI`
-
-Presents a framework that pools evidence across heterogeneous causal discovery methods — spanning different mathematical traditions — and produces a ranked list of candidate causal drivers based on cross-method convergence rather than the output of any single algorithm.
-
-*Why relevant: Novel approach to causal discovery ensemble/aggregation, relevant to structure learning and the reliability of inferred causal graphs.*
+*Why relevant: Directly combines Markov boundary selection with causal discovery under regime changes — touches non-stationary causal structure learning, a natural extension of constraint-based methods.*
 
 ---
 
-### Causal Local States: Scalable Simultaneous Causal Network Inference and Forecasting for Dynamical Systems
-**Jonas Braun, Fabian Fischbach, Daniel Köglmayr, Sebastian Baur, Christoph Räth**
-[arXiv:2608.17452](https://arxiv.org/abs/2608.17452v1) | `cs.LG`
+### Federated Causal Discovery via Regression-Directed Cumulants
+**Pablo Torrijos, Fabio Stella, José A. Gámez, José M. Puerta**  
+[arXiv:2609.03705](https://arxiv.org/abs/2609.03705) | `cs.LG`
 
-Introduces "causal local states" that unify causal network inference (in the spirit of PCMCI) with predictive modeling for dynamical systems, enabling scalable simultaneous structure discovery and forecasting from observational time series.
+Adapts DirectLiNGAM to federated settings by showing that the higher-order cumulant tensors required for direction identification can be aggregated across clients without sharing raw data, enabling causal discovery beyond Markov equivalence under GDPR-style constraints.
 
-*Why relevant: Novel causal discovery method for dynamical systems; directly relevant to interventional causal discovery and structure learning.*
-
----
-
-## Interventions, Identification & Experimental Design
-
-### Testing the Validity of Instrumental Variable Sets in Causal Additive Models with Non-Constant Effects
-**Xichen Guo, Feng Xie, Bingbing Tang, Yan Zeng, Zhang Hao, Zhi Geng, Ruichu Cai, Kun Zhang**
-[arXiv:2608.19771](https://arxiv.org/abs/2608.19771v1) | `stat.ME`
-
-Develops a conditional independence-based test for whether a candidate set of instrumental variables is valid under Causal Additive Models with Non-Constant Effects (CAM-NCE), addressing the practical difficulty of verifying IV assumptions under unmeasured confounding in the additive noise setting.
-
-*Why relevant: Intersects IV validity, causal additive models, and CI testing under latent confounding — all core research themes.*
+*Why relevant: LiNGAM / additive-noise-model causal discovery; goes beyond Markov equivalence classes in a privacy-preserving way — intersects structure learning and non-Gaussian methods.*
 
 ---
 
-### Self-Normalizing Denominators in Rational Causal Estimation
-**Shu Tamano**
-[arXiv:2608.20223](https://arxiv.org/abs/2608.20223v1) | `math.ST`
+### Guide, Not Bind: Why Defeasible Priors Fail in Augmented Lagrangian Causal Discovery
+**Sairam Sundararaman, Sara Girdhar, Manit Narasimha Murthy, Samrudh N.**  
+[arXiv:2609.03442](https://arxiv.org/abs/2609.03442) | `cs.LG`
 
-Shows that certain denominators in rational causal estimators derived from linear SEMs (including front-door-type formulas) cannot enter a weak-identification regime at first order: their sampling variation is exactly proportional to their magnitude, making the standardized denominator asymptotically non-degenerate without regularization.
+Diagnoses two fundamental failure modes of differentiable causal discovery (e.g. NOTEARS-style) when expert-knowledge forbidden-edge priors are encoded via Augmented Lagrangian penalties: sequential penalty ramping suppresses true edges before they can be checked, and the counterfactual correction remains incomplete even after repair.
 
-*Why relevant: Mathematical analysis of identifiability in SEMs and the front-door criterion; clarifies when weak identification is a genuine concern.*
-
----
-
-### Partial Identification Learning with Categorical Treatments for Individualized Treatment Rules
-**Johannes Hruza, Paweł Morzywołek, Jakob Zeitler, Samir Bhatt, Michael C Sachs**
-[arXiv:2608.19853](https://arxiv.org/abs/2608.19853v1) | `stat.ME`
-
-Develops a partial-identification framework for learning optimal individualized treatment rules with categorical treatments and IVs, replacing point-identification assumptions with causal bounds and showing how the resulting decision problem can still be solved tractably.
-
-*Why relevant: Partial identification + IV methods under unmeasured confounding; connects to identifying unknown soft-intervention targets with latent confounders.*
+*Why relevant: Core differentiable structure learning; the paper's formal analysis directly concerns DAG-constrained optimisation and the interplay between data evidence and expert priors in causal graph estimation.*
 
 ---
 
-### The Limits of Experimental Design: Covariate Balance Beyond Low Dimension
-**Max Cytrynbaum**
-[arXiv:2608.18057](https://arxiv.org/abs/2608.18057v1) | `econ.EM`, `math.ST`, `stat.ME`
+### Genetic Algorithms for Tractable Bayesian Network Fusion via Pre-Fusion Edge Pruning
+**Pablo Torrijos, José A. Gámez, José M. Puerta, Juan A. Aledo**  
+[arXiv:2609.03724](https://arxiv.org/abs/2609.03724) | `cs.NE`, `cs.LG`
 
-Proves an impossibility theorem: no experimental design can approach the semiparametric efficiency bound for treatment effect estimation uniformly over smooth outcome models when the covariate dimension d >> log n, with sharp matching lower bounds.
+Proposes a GA-based framework for merging multiple Bayesian networks into a single tractable structure; a pre-fusion edge-pruning step prioritises edges shared across input BNs, controlling treewidth while preserving statistically agreed-upon dependencies.
 
-*Why relevant: Fundamental result for causal experimental design in high dimensions; directly relevant to interventional causal discovery and optimal experiment selection.*
-
----
-
-### Let Time Tell: Identification and Gaussian Process Estimation for Interrupted Time Series
-**Soonhong Cho**
-[arXiv:2608.20610](https://arxiv.org/abs/2608.20610v1) | `stat.ME`, `stat.ML`
-
-Establishes formal identification conditions for average treatment effects in interrupted time series designs where no simultaneous controls are available and the counterfactual must be extrapolated from a unit's own pre-treatment history, with Gaussian process estimation of the counterfactual trajectory.
-
-*Why relevant: Identification of causal effects in a challenging single-unit setting; relevant to causal identification methodology under structural constraints.*
+*Why relevant: Bayesian network structure learning and fusion; relevant to combining multiple causal/graphical model sources while maintaining a parsimonious DAG.*
 
 ---
 
-## Unmeasured Confounding & Transportability
+### Replicating TRACE: A Practitioner's Guide to Its Threshold and Particle Budget
+**Alex Chadyuk, Alicia Zhang, Roy Kucukates**  
+[arXiv:2609.01108](https://arxiv.org/abs/2609.01108) | `cs.LG`
 
-### Causal Survival Forests with Negative Controls
-**Zijun Gao, Kyounggeui Hong, Leyi Ma, Qianli Wu, Zachary Izzo, Ruishan Liu**
-[arXiv:2608.19749](https://arxiv.org/abs/2608.19749v1) | `stat.ME`
+Independent replication of TRACE, a method that reads causal event-type graphs out of a pretrained autoregressive language model by thresholding per-position conditional mutual information. The replication confirms headline F1 numbers but shows the optimal threshold is pinned to the truth margin rather than a universal constant.
 
-Integrates proximal causal inference (negative control outcomes and exposures) with causal survival forests to estimate heterogeneous treatment effects in observational survival studies with both unmeasured confounding and censored outcomes. Introduces NC-CSF, a nonparametric HTE learner with theoretical guarantees.
-
-*Why relevant: Proximal causal inference directly addresses unmeasured confounders; novel nonparametric approach at the intersection of survival analysis and causal inference with latent confounders.*
+*Why relevant: Causal graph extraction / CI-testing from learned models; uses CMI thresholding, linking to CI-test-based structure learning methodology.*
 
 ---
 
-### Transportable Causal Effect Estimation across Networks under Interference
-**Xiaojing Du, Jiuyong Li, Lin Liu, Debo Cheng, Jixue Liu, Thuc Duy Le**
-[arXiv:2608.18932](https://arxiv.org/abs/2608.18932v1) | `cs.LG`
+## Interventions, Identifiability & Experimental Design
 
-Extends transportability theory to network settings with interference, where source and target populations differ in graph topology, node-covariate distributions, and spillover pathways.
+### Symmetries and Causality: Causal Effect Identification Beyond IID Data
+**Martin Rabel, Jakob Runge**  
+[arXiv:2609.03697](https://arxiv.org/abs/2609.03697) | `math.ST`, `cs.AI`
 
-*Why relevant: Transportability under structural differences between populations; relevant to external validity and causal effect generalization.*
+Develops a formal language for causal reasoning grounded in symmetries that leave causal mechanisms invariant, enabling identifiability analysis in settings beyond IID (time series, spatial data, dynamical systems) without bespoke causal models per case.
 
----
-
-### Transporting Trial Evidence Under Posterior Drift and Possible Hidden Confounding
-**Xilin Mao, Bosen Cui, Yuhong Yang**
-[arXiv:2608.17999](https://arxiv.org/abs/2608.17999v1) | `stat.ME`
-
-Develops a robust posterior-drift framework for transporting randomized trial evidence to observational target populations where the target may exhibit unmeasured (hidden) confounding, providing sensitivity analysis tools for the gap between trial and target.
-
-*Why relevant: Combines transportability with hidden confounding — directly relevant to unmeasured confounders and the robustness of transported causal estimates.*
+*Why relevant: Causal identification theory beyond IID; formal symmetry-based extension connects to FCI/PAG-style reasoning under non-standard data-generating regimes.*
 
 ---
 
-### Causal Generalization of Continuous Treatment Effects under Covariate Shift
-**Jay Jojo Cheng, Guanhua Chen**
-[arXiv:2608.19383](https://arxiv.org/abs/2608.19383v1) | `stat.ME`, `stat.ML`
+### Resolution-Aware Experimental Design under Partial Identifiability
+**Sofianos Panagiotis Fotias**  
+[arXiv:2609.03686](https://arxiv.org/abs/2609.03686) | `cs.LG`
 
-Studies generalization of average dose-response functions to a target population under covariate shift, developing two-sample local estimating equations that reweight source-sample estimates using importance weights estimated via distance covariance.
+Introduces RAED, which selects experiments by minimising the expected *structural candidate set* size under a false-exclusion constraint rather than maximising information gain. Proves an exact aliasing-separation theorem showing structural and latent-information objectives can diverge under partial identifiability.
 
-*Why relevant: Transportability of continuous treatment effects; use of distance covariance (a core CI-testing quantity) for reweighting connects to CI testing methodology.*
-
----
-
-## Conditional Independence Testing
-
-### A Multiscale Ball Test for Conditional Mean Independence
-**Simon Rudkin, Wanling Rudkin**
-[arXiv:2608.20727](https://arxiv.org/abs/2608.20727v1) | `stat.ME`
-
-Proposes MBCMI, a multiscale ball test that aggregates support-weighted local mean contrasts across balls of varying radius centered at each data point in the predictor space, targeting the regime where departures from conditional mean independence are confined to bounded subregions and the relevant spatial scale is unknown.
-
-*Why relevant: Novel CI-type test with local power properties; directly extends the toolbox of conditional independence tests relevant to constraint-based causal discovery.*
+*Why relevant: Optimal experimental design for causal structure learning under partial identifiability — directly relevant to active learning for causal discovery with latent variables.*
 
 ---
 
-### Conditional-Independence-Regularized Distributional Autoencoders for Mixed-Type Data
-**Siyuan Tang, Gongjun Xu, Ji Zhu**
-[arXiv:2608.20562](https://arxiv.org/abs/2608.20562v1) | `stat.ME`, `cs.LG`, `stat.ML`
+### Off-Policy Causal Estimation in Networks
+**Sahil Loomba, Dean Eckles**  
+[arXiv:2609.02756](https://arxiv.org/abs/2609.02756) | `stat.ME`, `econ.EM`
 
-Introduces a distributional autoencoder with a conditional independence regularization term that encourages the learned latent representation to respect the structural independence relationships of the observed mixed-type data (numerical and categorical).
+Studies off-policy estimation of causal effects under network interference, representing exposure-weighted potential outcomes in a biased-coin design and deriving estimators for heterogeneous Bernoulli policies with associated variance bounds.
 
-*Why relevant: Uses CI as a structural prior in a generative latent variable model; connects CI testing to representation learning and structure discovery.*
-
----
-
-## Graphical Models & SEM
-
-### A Two Stage Quasi-Likelihood Estimation Method for High Dimensional Generalized Structural Equation Models
-**Mohammad W. Hattab**
-[arXiv:2608.16017](https://arxiv.org/abs/2608.16017v1) | `stat.ME`
-
-Proposes a two-stage quasi-likelihood estimator for high-dimensional Generalized SEMs covering Poisson, negative binomial, and gamma response families, resolving the numerical instability and computational cost of simultaneous estimators in high dimensions.
-
-*Why relevant: High-dimensional SEM is a core topic; extends tractable structure learning/estimation to non-Gaussian count and skewed continuous outcomes.*
+*Why relevant: Causal estimation under interference / non-standard interventional distributions; connects to transportability and policy-shift identification in networked settings.*
 
 ---
 
-### Causal Modeling of Adverse Pregnancy Outcomes via Adaptive LLM Proposals
-**Kavimayil P. Komarasamy, Saurabh Mathur, Ameet Soni, David M. Haas, Kristian Kersting, Sriraam Natarajan**
-[arXiv:2608.21079](https://arxiv.org/abs/2608.21079v1) | `cs.LG`
+### COSTA: Covariance-Optimized Design and Causal Inference under Network-Temporal Interference
+**Qianyi Chen, Bo Li, Yongli Qin, Jinyong Ma**  
+[arXiv:2609.02032](https://arxiv.org/abs/2609.02032) | `stat.ME`
 
-Proposes a hybrid causal discovery framework that uses LLM-generated prior knowledge to propose candidate causal graphs in small-data settings, then iteratively refines graph structure with data-driven tests — addressing the failure modes of both pure data-driven and pure expert-knowledge approaches.
+Proposes COSTA, a joint Bernoulli spatiotemporal treatment-assignment design for network experiments with both spillovers and carryover. The Horvitz–Thompson bias equals the negative expected weight of an assignment cut; a covariance-level MSE bound is directly optimised.
 
-*Why relevant: Novel hybrid approach to causal discovery; demonstrates LLMs as a source of prior structural knowledge in small-sample regimes where standard algorithms fail.*
+*Why relevant: Experimental design under network/temporal interference — addresses identifiability of interventional effects in complex observational/experimental structures.*
+
+---
+
+### Causal Foundation Models
+**Christopher Stith, Hossein Rahmani, Jesse C. Cresswell**  
+[arXiv:2609.03003](https://arxiv.org/abs/2609.03003) | `cs.LG`, `stat.ML`
+
+Introduces the *causal foundation model* (CFM) paradigm: a neural network pretrained once at scale on diverse causal problems that estimates treatment effects, identifies causal quantities, and performs policy evaluation without per-task bespoke pipelines or fine-tuning.
+
+*Why relevant: A new architecture for causal inference estimation; bridges meta-learning with classical causal identification, potentially impacting how causal discovery and estimation are unified.*
+
+---
+
+## Conditional Independence Testing & Methodology
+
+### Embedded Conditional Independence Tests for Large Language Model Generated Text
+**Marco Simnacher, Georg Keilbar, Benjamin König, Christoph Lippert**  
+[arXiv:2609.00946](https://arxiv.org/abs/2609.00946) | `stat.ML`, `cs.AI`, `cs.LG`, `math.ST`
+
+Proposes eCITs (embedded conditional independence tests) that embed high-dimensional / multimodal objects (text, embeddings) before applying a standard CI test, enabling tests of whether an LLM's output carries attribute-related information beyond its source text, with theoretical guarantees. Applied to detecting political bias in German parliamentary speeches.
+
+*Why relevant: Core CI testing methodology for high-dimensional and non-Euclidean objects — directly relevant to kernel/distance-covariance CI tests in causal discovery pipelines.*
+
+---
+
+### Exploring Sparse Autoencoders in Text-Based Causal Confounding Adjustment
+**Mian Zhong, Katherine A. Keith, Anjalie Field**  
+[arXiv:2609.01322](https://arxiv.org/abs/2609.01322) | `cs.CL`, `cs.LG`
+
+Uses sparse autoencoders to extract a minimal, interpretable set of text features for confounding adjustment, iteratively selecting SAE features via conditional independence checks to balance richness (covering all confounders) against sparsity (finite-sample overlap).
+
+*Why relevant: CI-test-guided covariate selection for high-dimensional text confounding — applies CI testing as a principled model-selection criterion in the adjustment pipeline.*
+
+---
+
+### Confounding-Valid Conformal Inference for Counterfactual KPIs in Wireless Networks
+**Abdessamed Qchohi, Jessica Moysen Cortes, Matteo Zecchin**  
+[arXiv:2609.05073](https://arxiv.org/abs/2609.05073) | `cs.LG`, `cs.NI`, `eess.SP`, `stat.ML`
+
+Extends conformal counterfactual inference to settings with hidden confounding from omitted logged variables, using randomized nudges to recover valid coverage guarantees for counterfactual KPI prediction sets under latent confounders.
+
+*Why relevant: Counterfactual inference under latent confounding with finite-sample validity guarantees — directly touches identifiability under hidden confounders and propensity-based correction.*
+
+---
+
+## Treatment Effects & Observational Studies
+
+### Treatment Persistence Drives Estimator Performance in Longitudinal Causal Inference
+**Sergio Gaiotti, Sara Poletto, Enrico Longato, Erica Tavazzi**  
+[arXiv:2609.04940](https://arxiv.org/abs/2609.04940) | `stat.ME`
+
+Simulation study using an SCM with time-varying confounding comparing longitudinal estimators (TMLE, G-formula, IPW, etc.) across nine scenarios. Finds that treatment persistence — correlation between consecutive treatment decisions — is the primary driver of performance gaps between baseline and longitudinal estimators.
+
+*Why relevant: SCM-grounded evaluation of longitudinal causal estimators under time-varying confounding — of direct relevance to structure learning with time-varying interventions.*
+
+---
+
+### Causal Inference for Heterogeneous Extreme Quantiles with Heavy-Tailed Outcomes
+**Xiaorui Wang, Juan-Juan Cai, Huixia Judy Wang, Jian Qing Shi**  
+[arXiv:2609.03933](https://arxiv.org/abs/2609.03933) | `stat.ME`
+
+Proposes a framework for conditional extreme quantile treatment effects (CEQTEs) in observational studies with heavy-tailed outcomes: IPW quantile regression estimates intermediate quantiles which are extrapolated via extreme value theory, exploiting that conditional and marginal potential outcome distributions share a common extreme value index.
+
+*Why relevant: Nonparametric/semiparametric causal effect estimation under confounding with propensity score-based adjustment — extends IPW methodology to the heavy-tailed regime.*
+
+---
+
+### A Location-Invariant Estimator of Extremal Quantile Treatment Effects for Heavy-Tailed Distributions
+**Xin Yu, Shuwei Huang, Jicheng Liu, Jielin Tang**  
+[arXiv:2609.04018](https://arxiv.org/abs/2609.04018) | `cs.LG`, `stat.AP`, `stat.ME`
+
+Addresses a location-invariance gap in existing extremal QTE estimators and proposes a corrected causal extreme value index estimator and paired extrapolation procedure that respects the invariance of the population QTE to common location shifts.
+
+*Why relevant: Causal treatment effect estimation with propensity scores at extreme quantile levels — methodological extension of IPW-based estimation under heavy tails.*
+
+---
+
+## Graphical Models
+
+### A Computational Approach to Maximum Likelihood Thresholds for Colored Gaussian Graphical Models
+**Roser Homs, Olga Kuznetsova, Bernadette J. Stolz**  
+[arXiv:2609.02382](https://arxiv.org/abs/2609.02382) | `stat.ML`, `cs.LG`, `math.AG`, `math.ST`
+
+Studies the *maximum likelihood threshold* — the minimum sample size for the MLE to exist almost surely — for colored GGMs, which impose symmetry constraints via graph coloring to reduce effective dimension. Develops algebraic-geometry-based algorithms to compute MLTs for CGGMs.
+
+*Why relevant: Fundamental structure-learning question in Gaussian graphical models: when does identifiable estimation become possible? Extends classical GGM theory to structured/symmetric models.*
+
+---
+
+### Deterministic LOCO Cross-Validation for Multilevel Bayesian Structural Equation Models
+**Mohammad Alhyari, Haziq Jamil, Hans Montcho, Håvard Rue**  
+[arXiv:2609.00670](https://arxiv.org/abs/2609.00670) | `stat.ME`
+
+Derives a closed-form leave-one-cluster-out cross-validation procedure for multilevel Gaussian Bayesian SEMs via INLA, exploiting conditional independence of clusters given parameters to express the cluster-deleted posterior analytically and enable tractable SEM model selection.
+
+*Why relevant: SEMs with Markov-type conditional independence structure; the CI-based factorisation is central to the derivation, linking SEM model selection to graphical model methodology.*
 
 ---
 
 ## Other Relevant
 
-### Causal Mediation Analysis for an Interrupted Time Series: Stabilized Mediator Weighting with an Application to a Vehicle Emissions Policy
-**Shalini Jayanetti, Sumeet Kalia**
-[arXiv:2608.18326](https://arxiv.org/abs/2608.18326v1) | `stat.ME`
+### Portable Causal Fairness Across Synthetic Data Generator Families
+**Steven Golob, Sikha Pentyala, Martine De Cock**  
+[arXiv:2609.03180](https://arxiv.org/abs/2609.03180) | `cs.LG`
 
-Extends causal mediation analysis to interrupted time series designs using stabilized inverse-probability weighting for mediators, decomposing the total ITS treatment effect into direct and indirect (mediated) pathway contributions under a potential outcomes formulation.
+Tests whether DECAF-style causal fairness constraints (defined as edge cuts on the generator's causal graph) transfer across nine generators from three unrelated families. Finds the fairness constraints hold across families, confirming they arise from causal factorisation rather than GAN-specific artefacts.
 
-*Why relevant: Causal mediation under a non-standard design; relevant to identification of pathway-specific effects in complex structural settings.*
+*Why relevant: Applies causal graph structure (edge removal = soft intervention) to synthetic data generation — relevant to interventional causal discovery and data-driven causal fairness.*
 
 ---
 
-### Mixed-effects Outcome-Adaptive Lasso for Propensity Score Estimation under Partial Interference
-**Satoshi Nakashima, Akira Okazaki, Shuichi Kawano**
-[arXiv:2608.16365](https://arxiv.org/abs/2608.16365v1) | `stat.ME`
+### Spurious Quantum Correlations
+**Shashaank Khanna, Matthew F. Pusey, Roger Colbeck**  
+[arXiv:2609.04157](https://arxiv.org/abs/2609.04157) | `quant-ph`, `math.ST`, `physics.class-ph`
 
-Proposes an outcome-adaptive lasso for propensity score estimation under partial interference (grouped units), incorporating mixed-effects terms to account for intragroup correlation while selecting only the covariates predictive of both treatment and outcome.
+Extends Bell's theorem to show that any classical causal structure that recovers all quantum correlations must permit *spurious* correlations — classically impossible correlations arising purely from the causal structure, not physical signals.
 
-*Why relevant: Sparse variable selection for causal inference under interference; connects to neighborhood selection and high-dimensional graphical model methods.*
+*Why relevant: Uses causal structures and ancestral graphs in a fundamental way; results about achievable correlations under causal structures are directly relevant to graphical model identifiability theory.*
 
 ---
 
 ## Previous Digests
 
-- [2026-W34](archive/2026-W34.md) — August 10 – 17, 2026 (20 papers)
-- [2026-W33](archive/2026-W33.md) — August 3 – 10, 2026 (11 papers)
+- [2026-W35](archive/2026-W35.md) — August 24 – 31, 2026
+- [2026-W34](archive/2026-W34.md) — August 10 – 17, 2026
+- [2026-W33](archive/2026-W33.md) — August 3 – 10, 2026
 - [2026-W32](archive/2026-W32.md) — July 27 – August 3, 2026
 - [2026-W31](archive/2026-W31.md) — July 20 – 27, 2026
 - [2026-W29](archive/2026-W29.md) — July 13 – 20, 2026
