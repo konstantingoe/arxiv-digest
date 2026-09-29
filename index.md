@@ -8,15 +8,140 @@ Weekly curated digest of arXiv papers on causal inference, causal discovery, gra
 
 ---
 
-# arXiv Digest 2026-W39
+# arXiv Digest 2026-W40
 
-**Covered period:** 2026-09-14 to 2026-09-21 UTC  
-**Total scanned:** 884 | **Kept:** 18
+**Covered period:** 2026-09-21 to 2026-09-28 UTC  
+**Total scanned:** ~450 (cat:stat.ME, math.ST, stat.ML, cs.LG) | **Kept:** 12
 
 ---
 
 ## Causal Discovery & Structure Learning
 
+### Statistical Inference for Causal Discovery under Selection and Latent Variables via Single-Target Interventions
+**Xiaotian Hou, Kwangmoon Park, Hongzhe Li**  
+[arXiv:2609.28856](https://arxiv.org/abs/2609.28856) | `stat.ME` — 2026-09-23
+
+Addresses causal discovery when both latent confounders and selection bias are present, a setting where DAGs over observed variables are insufficient. The authors introduce *system-induced subgraphs* and establish identifiability via maximal ancestral graphs (MAGs) using single-target interventions on observed variables; they show such interventions are both sufficient and necessary, requiring at most 5/2d²_X tests for d_X observed variables — optimal up to a constant. The framework accommodates soft interventions, makes no parametric assumptions, and is validated on Perturb-seq lung-cancer data.
+
+*Why relevant: Directly targets JCI-style interventional causal discovery under latent confounding; the MAG/PAG identifiability result and soft-intervention treatment are core to the research agenda on localized root cause analysis.*
+
+---
+
+### MARCEDES: Score-based Causal Discovery under Non-Gaussianity with Continuous Optimization
+**Anamitra Chaudhuri, Anirban Bhattacharya, Yang Ni**  
+[arXiv:2609.30643](https://arxiv.org/abs/2609.30643) | `stat.ML`, `cs.LG`, `stat.CO`, `stat.ME` — 2026-09-25
+
+Proposes a continuous score-based method for learning DAGs from non-Gaussian structural equation models. The key contribution is a *mean absolute residual risk* score with row-specific sparsity penalties and a soft DAG constraint, enabling unconstrained gradient-based optimization. A generalized Bayes framework handles the non-smooth objective and penalty tuning; simulation studies confirm improved performance over existing approaches in finite-sample high-dimensional settings.
+
+*Why relevant: Non-Gaussian SEM + continuous DAG optimization is a direct contribution to structure learning; the score function and sparsity formulation connect to the sparse-additive nonparametric setting in the research profile.*
+
+---
+
+### LUCID: Learning Under Confounding for Inference and Discovery in Time Series
+**Mohammad Fesanghary**  
+[arXiv:2609.31315](https://arxiv.org/abs/2609.31315) | `cs.LG`, `stat.ML` — 2026-09-25
+
+Proposes LUCID, a method for causal discovery in time series data with unobserved common causes that induce spurious associations. The approach explicitly models latent confounders within a structural causal framework and recovers causal structure despite their presence. LUCID achieves an F1 score of 0.60 on synthetic benchmarks.
+
+*Why relevant: Causal discovery under latent confounding in the time-series setting; aligns with identifying unknown intervention targets and latent variable challenges in the research profile.*
+
+---
+
+## Interventions & Experimental Design
+
+### Optimal Sequential Decision-Making with Initiation Regimes
+**Laurendeau, Sarvet, Stensrud**  
+[arXiv:2609.29844](https://arxiv.org/abs/2609.29844) | `stat.ME` — 2026-09-25
+
+Develops the theory of *initiation regimes* — dynamic treatment rules that also govern when treatment begins — and proves they strictly generalize superoptimal regimes identified from large experiments. The paper derives identification and optimality results for this broader class of sequential decision rules.
+
+*Why relevant: Extends the theory of optimal dynamic treatment regimes (interventional causal inference) and has direct implications for experimental design with intervention timing.*
+
+---
+
+### Factorial Multivariate Bayesian Causal Forests
+**Danilo A. Sarti**  
+[arXiv:2609.31332](https://arxiv.org/abs/2609.31332) | `stat.ME`, `stat.AP`, `stat.CO` — 2026-09-25
+
+Introduces a Bayesian nonparametric model for heterogeneous treatment effects when units receive several binary treatments and outcomes are correlated. Factorial Multivariate Bayesian Causal Forests (F-MBCF) uses a tree ensemble that jointly captures treatment–outcome interactions and within-outcome dependence, providing posterior uncertainty quantification for factorial causal contrasts.
+
+*Why relevant: Multi-treatment causal inference with nonparametric methods; the factorial / joint intervention framing is closely related to Joint Causal Inference and experimental settings with multiple simultaneous interventions.*
+
+---
+
+### An End-to-End Pipeline for Causal ML with Continuous Treatments
+**Moral Hernández, Higuera-Cabañes, Ibraín**  
+[arXiv:2609.30396](https://arxiv.org/abs/2609.30396) | `stat.ME`, `cs.LG`, `stat.AP`, `stat.ML` — 2026-09-25
+
+Presents a practical end-to-end causal machine learning pipeline for settings with continuous treatment variables. Contributions include a modular architecture for high-dimensional confounding adjustment, dose-response function estimation, and sensitivity analysis, validated on real-world datasets.
+
+*Why relevant: Practical causal ML for continuous interventions; addresses high-dimensional confounding in line with the sparse/nonparametric methods strand of the research profile.*
+
+---
+
+### Sample-Efficient Multiple Testing with Adaptive Data Collection
+**Zhanran Lin, Wanteng Ma, Zhimei Ren**  
+[arXiv:2609.26651](https://arxiv.org/abs/2609.26651) | `stat.ME` — 2026-09-22
+
+Studies how to allocate sampling effort across hypotheses in an adaptive experiment while maintaining FDR control. The method uses e-value-based posterior sampling under the e-BH procedure, adapting data collection to the evidence accumulated so far. Proven to be more sample-efficient than non-adaptive designs while preserving finite-sample FDR guarantees.
+
+*Why relevant: Adaptive experimental design with FDR control; directly addresses the intersection of interventional causal discovery and optimal experimental design that is central to the research profile.*
+
+---
+
+## Mediation Analysis & Counterfactuals
+
+### Formulating Cross-World Mediation Estimands Through Single-World Mixtures
+**Razieh Nabi, David Benkeser**  
+[arXiv:2609.27075](https://arxiv.org/abs/2609.27075) | `stat.ME` — 2026-09-22
+
+Natural direct and indirect effects are traditionally defined via nested counterfactuals crossing potential worlds. This paper shows that under *susceptibility marker* assumptions, these cross-world estimands can be expressed as mixtures of controlled (single-world) direct effects, yielding identification from observed data without cross-world independence. Provides a path toward more credible nonparametric identification of mediation estimands.
+
+*Why relevant: Counterfactual identification under latent confounding for mediation analysis; the single-world mixture representation is a new identifiability result connecting nested counterfactuals to estimable quantities, directly relevant to causal reasoning with latent variables.*
+
+---
+
+## Graphical Models & Conditional Independence Testing
+
+### High-Dimensional Gaussian Graphical Model Testing for Long-Memory Time Series
+**Zhai, Zhong, Wu**  
+[arXiv:2609.30565](https://arxiv.org/abs/2609.30565) | `stat.ME`, `math.ST`, `stat.ML` — 2026-09-25
+
+Develops a data-adaptive conditional independence test for high-dimensional Gaussian graphical models (GGMs) when observations exhibit long-range dependence. The test accounts for the inflated covariance of sample correlations under long memory, providing valid inference for GGM edge selection where standard independence tests fail. Asymptotic theory and simulations on both synthetic and financial time-series data are provided.
+
+*Why relevant: Conditional independence testing for graphical model structure under non-i.i.d. (long-memory) observations; directly extends the CI testing methodology in the research profile to dependent settings.*
+
+---
+
+## Causal Perspectives on Distribution Shift & Epidemiology
+
+### Concept Drift from a Causal Perspective
+**Eduardo V. L. Barboza, Jean Paul Barddal, Robert Sabourin**  
+[arXiv:2609.25340](https://arxiv.org/abs/2609.25340) | `cs.LG`, `stat.ME` — 2026-09-21
+
+Proposes a Structural Causal Model taxonomy for concept drift, categorising shifts by causal origin: changes in exogenous noise, changes in mechanism functions, or changes in the causal graph topology itself. This causal decomposition separates types of drift that are conflated in distribution-centric accounts and suggests targeted adaptation strategies for each drift type.
+
+*Why relevant: SCM-based framework for distribution shift connects to transportability and invariant prediction; the mechanism-level decomposition is directly relevant to understanding when causal models transfer across environments.*
+
+---
+
+### Design-Ignoring versus Design-Respecting World Models for Epidemiology
+**Xiangyu Yu, Weiyu Liu**  
+[arXiv:2609.30679](https://arxiv.org/abs/2609.30679) | `stat.ME`, `stat.AP`, `stat.ML` — 2026-09-25
+
+Systematically compares world models that encode the study design (assignment mechanism, sampling, measurement) against those that ignore it, showing how design-ignoring models can embed spurious associations or fail to identify the target estimand. Formalises when design-respecting models are necessary for causal identification and proposes practical guidelines for epidemiological settings.
+
+*Why relevant: Formalises how study design enters causal identification — directly relevant to the observational-vs-interventional data distinction and transportability in causal discovery.*
+
+---
+
+### A Unified Framework for Estimating Direct Causal Effects under Spatial Confounding and Interference
+**Isqeel Ogunsola, Olatunji Johnson**  
+[arXiv:2609.28799](https://arxiv.org/abs/2609.28799) | `stat.ME` — 2026-09-23
+
+Addresses the joint presence of spatial confounding (unmeasured spatial factors) and spatial interference (unit interactions through proximity) in observational causal estimation. Proposes a unified estimator for direct causal effects with the R package `spaci`, accommodating both biases simultaneously rather than treating them independently as prior work does.
+
+*Why relevant: Estimation under spatial latent confounding and interference is an instance of the general problem of identifying causal effects with unobserved confounders; the unified treatment connects to the latent-variable identification challenges in the research profile.*
 ### Epidemiological Causal Graph Identification: Challenges, Identifiability and Algorithms
 **Sambit Mishra, Yingying Wang, Christine K. Johnson, Urbashi Mitra**  
 [arXiv:2609.20676](https://arxiv.org/abs/2609.20676) | `cs.LG` `stat.ME`
@@ -211,14 +336,14 @@ Quantifies the semiparametric efficiency loss from discarding partially-observed
 
 - [2026-W38](archive/2026-W38.md) — September 7 – 14, 2026
 - [2026-W37](archive/2026-W37.md) — August 31 – September 7, 2026
-- [2026-W36](archive/2026-W36.md) — August 24 – 31, 2026
-- [2026-W35](archive/2026-W35.md) — August 17 – 24, 2026
-- [2026-W34](archive/2026-W34.md) — August 10 – 17, 2026
-- [2026-W33](archive/2026-W33.md) — August 3 – 10, 2026
+- [2026-W36](archive/2026-W36.md) — August 24–31, 2026
+- [2026-W35](archive/2026-W35.md) — August 17–24, 2026
+- [2026-W34](archive/2026-W34.md) — August 10–17, 2026
+- [2026-W33](archive/2026-W33.md) — August 3–10, 2026
 - [2026-W32](archive/2026-W32.md) — July 27 – August 3, 2026
-- [2026-W31](archive/2026-W31.md) — July 20 – 27, 2026
-- [2026-W29](archive/2026-W29.md) — July 13 – 20, 2026
+- [2026-W31](archive/2026-W31.md) — July 20–27, 2026
+- [2026-W29](archive/2026-W29.md) — July 13–20, 2026
 - [2026-W28](archive/2026-W28.md) — June 29 – July 6, 2026
-- [2026-W27](archive/2026-W27.md) — June 22 – 29, 2026
-- [2026-W26](archive/2026-W26.md) — June 15 – 22, 2026
-- [2026-W25](archive/2026-W25.md) — June 8 – 15, 2026
+- [2026-W27](archive/2026-W27.md) — June 22–29, 2026
+- [2026-W26](archive/2026-W26.md) — June 15–22, 2026
+- [2026-W25](archive/2026-W25.md) — June 8–15, 2026
